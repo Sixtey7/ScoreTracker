@@ -1,7 +1,7 @@
 {
-  "name": "SoreTracker",
+  "name": "scoretracker",
   "version": "1.0.0",
-  "description": "",
+  "description": "This is a pretty crappy ScoreTracker used to track the scores of board games.",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -13,8 +13,8 @@
     "url": "git+https://github.com/Sixtey7/ScoreTrackerBackend.git"
   },
   "keywords": [],
-  "author": "",
-  "license": "ISC",
+  "author": "Patrick Shaw",
+  "license": "UNLICENSED",
   "bugs": {
     "url": "https://github.com/Sixtey7/ScoreTrackerBackend/issues"
   },
