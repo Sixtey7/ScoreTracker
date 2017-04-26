@@ -14,7 +14,7 @@ Includes a custom score calculator for Agricola (whicih was the inspiration for 
 	+ Require a different scoring system
 	
 
-##History
+## History
 I initially started this as two seperate GitHub Repos.  
 
 Using this third repo as a chance to bring the two together.  Also want to clean up the code based on what I learned from writing the first two and to move the frontend to Angular 4, from Angular 2. 
@@ -22,10 +22,10 @@ Using this third repo as a chance to bring the two together.  Also want to clean
 
 Old Commits can be found here:
 
-###Backend
+### Backend
 https://github.com/Sixtey7/ScoreTrackerBackend
 
-###Frontend
+### Frontend
 https://github.com/Sixtey7/ScoreTrackerAng2
 
 ## Author
