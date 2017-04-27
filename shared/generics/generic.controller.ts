@@ -2,14 +2,14 @@ import * as mongoose from 'mongoose';
 import {
 	Player,
 	IPlayerModel,
-	IGameResultModel,
+	GameResult,
 	IPlayerResultModel,
 	PlayerResult
 } from '../../shared/shared';
 
-export default class GenericController<T extends IGameResultModel> {
+export default class GenericController<G extends GameResult<P>, P extends IPlayerResultModel> {
 
-	private model: mongoose.Model<T>;
+	private model: mongoose.Model<G>;
 	/**
 	*
 	* Constructor to set the model
@@ -63,7 +63,7 @@ export default class GenericController<T extends IGameResultModel> {
 	* Returns All Of T
 	*
 	**/
-	public getAll() : Promise<T[]> {
+	public getAll() : Promise<G[]> {
 		return new Promise((resolve, reject) => {
 			this.model.find({}, function(err, all) {
 				if (err) { 
@@ -148,10 +148,10 @@ export default class GenericController<T extends IGameResultModel> {
 
 					//if we're here - the player hasn't been added yet
 					//first, create a new player result
-					let newPlayerResult : IPlayerResultModel = new PlayerResult({
+					let newPlayerResult : P = ({
 						playerId: player._id,
 						score: 0
-					});
+					} as P);
 
 					game.playerResults.push(newPlayerResult);
 

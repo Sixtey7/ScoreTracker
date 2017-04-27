@@ -3,10 +3,11 @@ import express = require('express');
 import GenericController from './generic.controller';
 
 import {
-	IGameResultModel
+	GameResult,
+	IPlayerResultModel
 } from '../../shared/shared';
 
-export default class GenericRoutes<T extends GenericController<V>, V extends IGameResultModel> {
+export default class GenericRoutes<T extends GenericController<V, P>, V extends GameResult<P>, P extends IPlayerResultModel> {
 	
 	private controller: T;
 	private prefix: string;
