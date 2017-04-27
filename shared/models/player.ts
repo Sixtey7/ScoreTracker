@@ -1,6 +1,7 @@
 import * as mongoose from 'mongoose';
 
 interface IPlayer {
+	_id: string | number;
 	name: string;
 };
 

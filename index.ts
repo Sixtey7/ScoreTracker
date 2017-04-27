@@ -5,7 +5,9 @@ import * as bodyParser from 'body-parser';
 import errorHandler = require('errorhandler');
 import methodOverride = require('method-override');
 import mongodb = require('mongodb');
-import StandardRoutes from './standard/routes/standard.routes';
+
+//My Imports
+import { StandardRoutes } from './standard/standard';
 
 let app : express = express();
 

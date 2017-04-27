@@ -2,7 +2,11 @@ import express = require('express');
 
 import GenericController from './generic.controller';
 
-export default class GenericRoutes<T extends GenericController<V>, V> {
+import {
+	IGameResultModel
+} from '../../shared/shared';
+
+export default class GenericRoutes<T extends GenericController<V>, V extends IGameResultModel> {
 	
 	private controller: T;
 	private prefix: string;
@@ -26,6 +30,29 @@ export default class GenericRoutes<T extends GenericController<V>, V> {
 				.catch(err => {
 					res.status(500).send(err);
 				});
+		});
+
+		app.put('/' + this.prefix + '/addPlayer', (req: express.Request, res: express.Response) => {
+			console.log('Adding a player!');
+			if (req.query.gameId !== undefined) {
+				if (req.query.playerName !== undefined) {
+					this.controller.addPlayer(req.query.gameId, req.query.playerName)
+						.then(newPlayer => {
+							console.log('Player Added: ' + JSON.stringify(newPlayer));
+							res.status(200).send(newPlayer);
+						})
+						.catch(err => {
+							console.error('Got an error attempting to add a new player to game (' + req.query.gameId + ')\n' + err);
+							res.status(500).send(err);
+						});
+				}
+				else {
+					res.status(400).send('playerName is a required parameter!');
+				}
+			}
+			else {
+				res.status(400).send('gameId is a required parameter');
+			}
 		});
 	};
 };
