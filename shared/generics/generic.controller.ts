@@ -3,11 +3,10 @@ import {
 	Player,
 	IPlayerModel,
 	GameResult,
-	IPlayerResultModel,
 	PlayerResult
 } from '../../shared/shared';
 
-export default class GenericController<G extends GameResult<P>, P extends IPlayerResultModel> {
+export default class GenericController<G extends GameResult<P>, P extends PlayerResult> {
 
 	private model: mongoose.Model<G>;
 	/**
@@ -150,7 +149,6 @@ export default class GenericController<G extends GameResult<P>, P extends IPlaye
 					//first, create a new player result
 					let newPlayerResult : P = ({
 						playerId: player._id,
-						score: 0
 					} as P);
 
 					game.playerResults.push(newPlayerResult);

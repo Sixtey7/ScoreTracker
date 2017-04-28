@@ -4,10 +4,10 @@ import GenericController from './generic.controller';
 
 import {
 	GameResult,
-	IPlayerResultModel
+	PlayerResult
 } from '../../shared/shared';
 
-export default class GenericRoutes<T extends GenericController<V, P>, V extends GameResult<P>, P extends IPlayerResultModel> {
+export default class GenericRoutes<T extends GenericController<V, P>, V extends GameResult<P>, P extends PlayerResult> {
 	
 	private controller: T;
 	private prefix: string;

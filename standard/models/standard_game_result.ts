@@ -2,17 +2,20 @@ import * as mongoose from 'mongoose';
 
 
 import { 
-	GameResult
-} from '../shared';
+	GameResult,
+} from '../../shared/shared';
 
-import { playerResultSchema, IPlayerResultModel } from './player_result';
+import {
+	standardPlayerResultSchema,
+	IStandardPlayerResultModel
+} from './standard_player_result';
 
-interface IStandardGameResultModel extends GameResult<IPlayerResultModel>, mongoose.Document{}
+interface IStandardGameResultModel extends GameResult<IStandardPlayerResultModel>, mongoose.Document{}
 
 var standardGameResultSchema = new mongoose.Schema({
 	gameDefId: String,
 	date : { type: Date, default: Date.now },
-	playerResults: [playerResultSchema],
+	playerResults: [standardPlayerResultSchema],
 	expansions: [String]
 });
 

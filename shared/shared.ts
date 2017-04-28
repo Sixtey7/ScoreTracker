@@ -6,9 +6,6 @@ import { IGameDefExpansionModel, GameDefExpansion } from './models/game_def_expa
 import { IGameDefModel, GameDef } from './models/game_def';
 
 import { IPlayerModel, Player } from './models/player';
-import { IPlayerResultModel, PlayerResult } from './models/player_result';
-
-import { IStandardGameResultModel, StandardGameResult } from './models/game_result';
 
 import PlayerResultSummary from './models/player_result_summary';
 import GameResultSummary from './models/game_result_summary';
@@ -17,7 +14,7 @@ import GameResultSummary from './models/game_result_summary';
 import GenericController from './generics/generic.controller';
 import GenericRoutes from './generics/generic.routes';
 import GameResult from './generics/generic_game_result';
-
+import PlayerResult from './generics/generic_player_result'
 export {
 	//Enums
 	ScoringType,
@@ -30,11 +27,6 @@ export {
 
 	IPlayerModel,
 	Player,
-	IPlayerResultModel,
-	PlayerResult,
-
-	IStandardGameResultModel,
-	StandardGameResult,
 
 	PlayerResultSummary,
 	GameResultSummary,
@@ -42,5 +34,6 @@ export {
 	//Generics
 	GenericController,
 	GenericRoutes,
-	GameResult
+	GameResult,
+	PlayerResult
 };
