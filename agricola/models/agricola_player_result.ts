@@ -42,7 +42,7 @@ var agricolaPlayerResultSchema = new mongoose.Schema({
     score: Number
 });
 
-var AgricolaPlayerResult = mongoose.model<IAgricolaPlayerResultModel>("PlayerResult", agricolaPlayerResultSchema);
+var AgricolaPlayerResult = mongoose.model<IAgricolaPlayerResultModel>("AgricolaPlayerResult", agricolaPlayerResultSchema);
 
 export {
 	IAgricolaPlayerResultModel,

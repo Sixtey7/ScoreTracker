@@ -8,6 +8,7 @@ import mongodb = require('mongodb');
 
 //My Imports
 import { StandardRoutes } from './standard/standard';
+import { AgricolaRoutes } from './agricola/agricola';
 
 let app : express = express();
 
@@ -30,6 +31,7 @@ mongoose.connect('mongodb://localhost:27017/scoretracker');
 
 //Setup the routes
 new StandardRoutes(app);
+new AgricolaRoutes(app);
 
 app.listen(30000, function() {
 	console.log('App listening on port 30000');
