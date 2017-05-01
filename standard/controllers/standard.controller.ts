@@ -1,5 +1,5 @@
 import {
-	GenericController,
+	GenericScoredController,
 	GameResult
 } from '../../shared/shared';
 
@@ -9,7 +9,7 @@ import {
 	StandardGameResult,
 } from '../standard';
 
-export default class StandardController extends GenericController<IStandardGameResultModel, IStandardPlayerResultModel> {
+export default class StandardController extends GenericScoredController<IStandardGameResultModel, IStandardPlayerResultModel> {
 
 	constructor() {
 		super(StandardGameResult);

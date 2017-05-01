@@ -1,5 +1,5 @@
 import {
-	GenericController,
+	GenericScoredController,
 	GameResult
 } from '../../shared/shared';
 
@@ -9,7 +9,7 @@ import {
 	AgricolaGameResult,
 } from '../agricola';
 
-export default class AgricolaController extends GenericController<IAgricolaGameResultModel, IAgricolaPlayerResultModel> {
+export default class AgricolaController extends GenericScoredController<IAgricolaGameResultModel, IAgricolaPlayerResultModel> {
 
 	constructor() {
 		super(AgricolaGameResult);
