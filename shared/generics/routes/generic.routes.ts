@@ -1,11 +1,10 @@
 import express = require('express');
 
-import GenericController from './generic.controller';
-
 import {
 	GameResult,
-	PlayerResult
-} from '../../shared/shared';
+	PlayerResult,
+	GenericController
+} from '../../../shared/shared';
 
 export default class GenericRoutes<T extends GenericController<V, P>, V extends GameResult<P>, P extends PlayerResult> {
 	

@@ -1,11 +1,12 @@
 import * as mongoose from 'mongoose';
 
 import {
-	PlayerResult
+	ScoredPlayerResult
 } from '../../shared/shared';
 
-interface IAgricolaPlayerResult extends PlayerResult {
-	fieldsNum: number;
+class IAgricolaPlayerResult implements ScoredPlayerResult {
+	playerId: string | number;
+    fieldsNum: number;
     pastureNum: number;
     grainNum: number;
     vegNum: number;
@@ -20,6 +21,11 @@ interface IAgricolaPlayerResult extends PlayerResult {
     cardNum: number;
     bonusNum: number;
     score: number;
+
+    calculateScore(_other: ScoredPlayerResult) {
+        //TODO: gotta fix this
+        this.score = _other.score;
+    }
 };
 
 interface IAgricolaPlayerResultModel extends IAgricolaPlayerResult, mongoose.Document{};

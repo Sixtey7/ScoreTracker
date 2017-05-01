@@ -4,7 +4,7 @@ import {
 	IPlayerModel,
 	GameResult,
 	PlayerResult
-} from '../../shared/shared';
+} from '../../../shared/shared';
 
 export default class GenericController<G extends GameResult<P>, P extends PlayerResult> {
 
@@ -76,6 +76,11 @@ export default class GenericController<G extends GameResult<P>, P extends Player
 		});
 	};
 
+	/**
+	*
+	* Adds A Player To The Given Game
+	*
+	**/
 	public addPlayer(_gameId: string, _name: string): Promise<IPlayerModel> {
 		let that = this;
 
@@ -125,6 +130,11 @@ export default class GenericController<G extends GameResult<P>, P extends Player
 		});
 	}
 
+	/**
+	*
+	* Private method used to actually add the player to the game
+	*
+	**/
 	private addPlayerToGame(_gameId: string, player: IPlayerModel): Promise<boolean> {
 		return new Promise((resolve, reject) => {
 			//find the game for the given id
@@ -167,6 +177,29 @@ export default class GenericController<G extends GameResult<P>, P extends Player
 					reject('no game found with that id!');
 				}
 			});
+		});
+	};
+
+	/**
+	*
+	* Starts a new game and returns the game defintion
+	*
+	**/
+	public startGame(_gameContents: G): Promise<G> {
+		return new Promise((resolve, reject) => {
+			let newGameResult = new this.model({
+				gameDefId: _gameContents.gameDefId,
+				date: _gameContents.date,
+				expansions: _gameContents.expansions
+			});
+
+			newGameResult.save()
+				.then(response => {
+					resolve(response);
+				}, err => {
+					console.error('Got an error attempting the save a newly created game!\n' + err);
+					reject(err);
+				});
 		});
 	};
 

@@ -11,10 +11,11 @@ import PlayerResultSummary from './models/player_result_summary';
 import GameResultSummary from './models/game_result_summary';
 
 //Generics
-import GenericController from './generics/generic.controller';
-import GenericRoutes from './generics/generic.routes';
-import GameResult from './generics/generic_game_result';
-import PlayerResult from './generics/generic_player_result'
+import GenericController from './generics/controllers/generic.controller';
+import GenericRoutes from './generics/routes/generic.routes';
+import GameResult from './generics/models/generic_game_result';
+import PlayerResult from './generics/models/generic_player_result';
+import { ScoredPlayerResult } from './generics/models/generic_scored_player_result';
 export {
 	//Enums
 	ScoringType,
@@ -35,5 +36,6 @@ export {
 	GenericController,
 	GenericRoutes,
 	GameResult,
-	PlayerResult
+	PlayerResult,
+	ScoredPlayerResult
 };
