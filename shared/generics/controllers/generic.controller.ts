@@ -8,7 +8,7 @@ import {
 
 export default class GenericController<G extends GameResult<P>, P extends PlayerResult> {
 
-	private model: mongoose.Model<G>;
+	protected model: mongoose.Model<G>;
 	/**
 	*
 	* Constructor to set the model
