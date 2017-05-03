@@ -7,6 +7,7 @@ import methodOverride = require('method-override');
 import mongodb = require('mongodb');
 
 //My Imports
+import { GameDefRoutes } from './gamedefs/gamedefs';
 import { StandardRoutes } from './standard/standard';
 import { AgricolaRoutes } from './agricola/agricola';
 
@@ -30,6 +31,7 @@ var mongoose = require('mongoose');
 mongoose.connect('mongodb://localhost:27017/scoretracker');
 
 //Setup the routes
+new GameDefRoutes(app);
 new StandardRoutes(app);
 new AgricolaRoutes(app);
 
