@@ -57,5 +57,63 @@ export default class GenericScoredController<G extends GameResult<P>, P extends 
 		});
 	}
 
+	public saveGame(gameId: string, playerArray: P[]) : Promise<boolean> {
+		let that = this;
+		return new Promise((resolve, reject) => {
+			let query = { _id: gameId };
+
+			this.model.findOne(query, function(err, game) {
+				if (err) {
+					console.log('got an error attempting to find a game with id: ' + gameId + '\n' + err);
+
+					reject(err);
+				}
+				else {
+					if (game) {
+						//need to match up the players
+						for (let clientCounter: number = 0; clientCounter < playerArray.length; clientCounter++) {
+							let playerFound: boolean = false;
+							let serverResultCounter: number = -1;
+							for (serverResultCounter = 0; serverResultCounter < game.playerResults.length; serverResultCounter++) {
+								if (game.playerResults[serverResultCounter].playerId === playerArray[clientCounter].playerId) {
+									playerFound = true;
+									break;
+								}
+							}
+
+							if (playerFound) {
+								console.log('copying score!');
+								game.playerResults[serverResultCounter].calculateScore(playerArray[clientCounter]);
+							}
+							else {
+								console.log('No player found for id: ' + playerArray[clientCounter].playerId);
+
+								let newServerPlayer: P = {
+									playerId: playerArray[clientCounter].playerId
+								} as P;
+
+								newServerPlayer.calculateScore(playerArray[clientCounter]);
+
+								game.playerResults.push(newServerPlayer);
+							}
+						}
+
+						game.save()
+							.then(response => {
+								console.log('Successfully saved the game!');
+								resolve(true);
+							}, err => {
+								console.log('got an error attempting to save the game:\n' + err);
+								resolve(false);
+							});
+					}
+					else {
+						console.log('no game found for gameId: ' + gameId);
+						resolve(false);
+					}
+				}
+			});
+		});
+	}
 }
 
