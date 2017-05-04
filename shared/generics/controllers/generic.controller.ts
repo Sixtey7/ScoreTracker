@@ -3,7 +3,9 @@ import {
 	Player,
 	IPlayerModel,
 	GameResult,
-	PlayerResult
+	PlayerResult,
+	GameResultSummary,
+	PlayerResultSummary
 } from '../../../shared/shared';
 
 export default class GenericController<G extends GameResult<P>, P extends PlayerResult> {
@@ -75,6 +77,39 @@ export default class GenericController<G extends GameResult<P>, P extends Player
 			});
 		});
 	};
+
+	public getAllGamesSummary(): Promise<GameResultSummary[]> {
+		return new Promise((resolve, reject) => {
+			this.model.find({}, {_id: 1, game: 1, gameDefId: 1, date: 1, 'playerResults.playerId': 1, 'playerResults.score': 1}, function(err, games) {
+				if (err) {
+					console.error('Got an error attempting to query to build game result summary:\n' + err);
+					reject(err);
+				}
+				else {
+					if (games) {
+						let returnVal: GameResultSummary[] = new Array<GameResultSummary>();
+						for (let x: number = 0; x < games.length; x++) {
+							let newVal: GameResultSummary = new GameResultSummary(games[x].id, games[x].gameDefId, games[x].date);
+							for (let y: number = 0; y < games[x].playerResults.length; y++) {
+								newVal.playerResults.push(new PlayerResultSummary(
+										games[x].playerResults[y].playerId,
+										games[x].playerResults[y].score //if not a scored game, this will return null - frontend will handle that
+									));
+							}
+
+							returnVal.push(newVal);
+						}
+
+						resolve(returnVal);
+					}
+					else {
+						console.log('no games found!');
+						resolve({});
+					}
+				}
+			});
+		});
+	}
 
 	/**
 	*
