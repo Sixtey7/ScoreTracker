@@ -8,6 +8,7 @@ import mongodb = require('mongodb');
 
 //My Imports
 import { GameDefRoutes } from './gamedefs/gamedefs';
+import { PlayerRoutes } from './players/players';
 import { StandardRoutes } from './standard/standard';
 import { AgricolaRoutes } from './agricola/agricola';
 import { LauncherRoutes } from './launcher/launcher';
@@ -33,6 +34,7 @@ mongoose.connect('mongodb://localhost:27017/scoretracker');
 
 //Setup the routes
 new GameDefRoutes(app);
+new PlayerRoutes(app);
 new LauncherRoutes(app);
 new StandardRoutes(app);
 new AgricolaRoutes(app);
