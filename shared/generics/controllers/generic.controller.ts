@@ -19,6 +19,7 @@ export default class GenericController<G extends GameResult<P>, P extends Player
 	constructor(_model: any) {
 		this.model = _model;
 	}
+
 	/**
 	*
 	*  Returns the player objects matching the provided player ids

@@ -22,6 +22,25 @@ export default class GenericRoutes<T extends GenericController<V, P>, V extends 
 			res.status(200).send('Hello World!');
 		});
 
+		app.put('/' + this.prefix + '/begin', (req: express.Request, res:express.Response) => {
+			let bodyGame: V = req.body;
+
+			if (bodyGame) {
+				this.controller.startGame(bodyGame)
+					.then(response => {
+						res.status(200).send(response.id);
+					})
+					.catch(err => {
+						console.error('got an error attempting to start a game\n' + err);
+						res.status(500).send(err);
+					})
+			}
+			else {
+				console.error('no game was provided in begin');
+				res.status(400).send('a game is required in the body of the request!');
+			}
+		});
+
 		app.get('/' + this.prefix + '/getAll', (req: express.Request, res: express.Response) => {
 			return this.controller.getAll()
 				.then(response => {
