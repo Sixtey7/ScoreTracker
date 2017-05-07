@@ -28,7 +28,7 @@ export default class GenericRoutes<T extends GenericController<V, P>, V extends 
 			if (bodyGame) {
 				this.controller.startGame(bodyGame)
 					.then(response => {
-						res.status(200).send(response.id);
+						res.status(200).send(response._id);
 					})
 					.catch(err => {
 						console.error('got an error attempting to start a game\n' + err);

@@ -68,7 +68,7 @@ export default class GameDefRoutes {
 		});
 
 
-		app.get('/' + this.prefix + ' /allGameDefs', (req: express.Request, res: express.Response) => {
+		app.get('/' + this.prefix + '/allGameDefs', (req: express.Request, res: express.Response) => {
 			this.controller.getAllGameDefs()
 				.then(response => {
 					res.status(200).send(response);
