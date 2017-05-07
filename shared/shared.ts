@@ -15,6 +15,7 @@ import GenericController from './generics/controllers/generic.controller';
 import GenericScoredController from './generics/controllers/generic.scored.controller';
 
 import GenericRoutes from './generics/routes/generic.routes';
+import GenericScoredRoutes from './generics/routes/generic.scored.routes';
 
 import GameResult from './generics/models/generic_game_result';
 import PlayerResult from './generics/models/generic_player_result';
@@ -40,6 +41,7 @@ export {
 	GenericScoredController,
 
 	GenericRoutes,
+	GenericScoredRoutes,
 	
 	GameResult,
 	PlayerResult,

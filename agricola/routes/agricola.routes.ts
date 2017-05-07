@@ -1,7 +1,7 @@
 import express = require('express');
 
 import {
-	GenericRoutes,
+	GenericScoredRoutes,
 } from '../../shared/shared';
 
 import {
@@ -10,7 +10,7 @@ import {
 } from '../agricola';
 
 import AgricolaController from '../controllers/agricola.controller';
-export default class StandardRoutes extends GenericRoutes<AgricolaController, IAgricolaGameResultModel, IAgricolaPlayerResultModel> {
+export default class StandardRoutes extends GenericScoredRoutes<AgricolaController, IAgricolaGameResultModel, IAgricolaPlayerResultModel> {
 
 	constructor(app) {
 		super(app, new AgricolaController(), 'agricola');

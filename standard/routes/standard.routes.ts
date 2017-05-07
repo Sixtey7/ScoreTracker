@@ -1,7 +1,7 @@
 import express = require('express');
 
 import {
-	GenericRoutes,
+	GenericScoredRoutes,
 } from '../../shared/shared';
 
 import {
@@ -10,7 +10,7 @@ import {
 } from '../standard';
 
 import StandardController from '../controllers/standard.controller';
-export default class StandardRoutes extends GenericRoutes<StandardController, IStandardGameResultModel, IStandardPlayerResultModel> {
+export default class StandardRoutes extends GenericScoredRoutes<StandardController, IStandardGameResultModel, IStandardPlayerResultModel> {
 
 	constructor(app) {
 		super(app, new StandardController(), 'standard');

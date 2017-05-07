@@ -16,6 +16,25 @@ export default class GenericScoredController<G extends GameResult<P>, P extends 
 		super(_model);
 	};
 
+	public getScore(_gameId: string) : Promise<G> {
+		return new Promise((resolve, reject) => {
+			let query = { _id: _gameId };
+			this.model.findOne(query, function(err, game) {
+				if (err) {
+					console.error('Got an error attempting to find a game with id: ' + _gameId + '\n' + err);
+					reject(err);
+				}
+				else if (game) {
+					resolve(game);
+				}
+				else {
+					console.error('No game found for id: ' + _gameId);
+					reject('No Game Found');
+				}
+			});
+		});
+	};
+
 	public setScore(_gameId: string, _playerObj: P) : Promise<boolean> {
 		return new Promise((resolve, reject) => {
 			let query = {_id: _gameId};
