@@ -12,7 +12,7 @@ import GameResultSummary from './models/game_result_summary';
 
 //Generics
 import GenericController from './generics/controllers/generic.controller';
-import GenericScoredController from './generics/controllers/generic.scored.controller';
+import { GenericScoredController } from './generics/controllers/generic.scored.controller';
 
 import GenericRoutes from './generics/routes/generic.routes';
 import GenericScoredRoutes from './generics/routes/generic.scored.routes';

@@ -5,7 +5,7 @@ import {
 	ScoredPlayerResult
 } from '../../../shared/shared';
 
-export default class GenericScoredController<G extends GameResult<P>, P extends ScoredPlayerResult> extends GenericController<G, P> {
+export abstract class GenericScoredController<G extends GameResult<P>, P extends ScoredPlayerResult> extends GenericController<G, P> {
 
 	/**
 	*
@@ -102,7 +102,9 @@ export default class GenericScoredController<G extends GameResult<P>, P extends 
 
 							if (playerFound) {
 								console.log('copying score!');
-								game.playerResults[serverResultCounter].calculateScore(playerArray[clientCounter]);
+								//TODO: Error lies here!
+								console.log(JSON.stringify(game.playerResults[serverResultCounter]));
+								game.playerResults[serverResultCounter] = that.calculateScore(game.playerResults[serverResultCounter], playerArray[clientCounter]);
 							}
 							else {
 								console.log('No player found for id: ' + playerArray[clientCounter].playerId);
@@ -111,7 +113,7 @@ export default class GenericScoredController<G extends GameResult<P>, P extends 
 									playerId: playerArray[clientCounter].playerId
 								} as P;
 
-								newServerPlayer.calculateScore(playerArray[clientCounter]);
+								this.calculateScore(newServerPlayer, playerArray[clientCounter]);
 
 								game.playerResults.push(newServerPlayer);
 							}
@@ -134,5 +136,6 @@ export default class GenericScoredController<G extends GameResult<P>, P extends 
 			});
 		});
 	}
+	abstract calculateScore(firstPlayer: P, secondPlayer: P) : P;
 }
 

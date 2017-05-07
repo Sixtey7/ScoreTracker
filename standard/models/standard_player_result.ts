@@ -7,10 +7,6 @@ import {
 class IStandardPlayerResult implements ScoredPlayerResult {
 	playerId: string | number;
 	score: number;
-
-	calculateScore(_other: ScoredPlayerResult) {
-		this.score = _other.score;
-	}
 };
 
 interface IStandardPlayerResultModel extends IStandardPlayerResult, mongoose.Document{};

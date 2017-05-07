@@ -15,4 +15,10 @@ export default class StandardController extends GenericScoredController<IStandar
 		super(StandardGameResult);
 	};
 
+	public calculateScore(firstPlayer: IStandardPlayerResultModel, secondPlayer: IStandardPlayerResultModel) : IStandardPlayerResultModel {
+		firstPlayer.score = secondPlayer.score;
+		return firstPlayer;
+	}
+
+
 };

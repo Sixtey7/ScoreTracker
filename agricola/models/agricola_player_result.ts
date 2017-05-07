@@ -21,11 +21,6 @@ class IAgricolaPlayerResult implements ScoredPlayerResult {
     cardNum: number;
     bonusNum: number;
     score: number;
-
-    calculateScore(_other: ScoredPlayerResult) {
-        //TODO: gotta fix this
-        this.score = _other.score;
-    }
 };
 
 interface IAgricolaPlayerResultModel extends IAgricolaPlayerResult, mongoose.Document{};

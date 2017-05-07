@@ -15,4 +15,10 @@ export default class AgricolaController extends GenericScoredController<IAgricol
 		super(AgricolaGameResult);
 	};
 
+	//TODO: Fix this
+	public calculateScore(firstPlayer: IAgricolaPlayerResultModel, secondPlayer: IAgricolaPlayerResultModel) : IAgricolaPlayerResultModel {
+		firstPlayer.score = secondPlayer.score;
+		return firstPlayer;
+	}
+
 };
