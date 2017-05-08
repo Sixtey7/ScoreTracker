@@ -3,21 +3,23 @@ import express = require('express');
 import {
 	GameResult,
 	ScoredPlayerResult,
-	GenericScoredController
+	GenericScoredController,
+	GenericRoutes
 } from '../../../shared/shared';
 
-export default class GenericScoredRoutes<T extends GenericScoredController<V, P>, V extends GameResult<P>, P extends ScoredPlayerResult> {
-
+export default class GenericScoredRoutes<T extends GenericScoredController<V, P>, V extends GameResult<P>, P extends ScoredPlayerResult> extends GenericRoutes<T, V, P> {
+/*
 	private controller: T;
 	private prefix: string;
-
+*/
 	constructor(app: express, _cont: T, _prefix: string) {
-		this.controller = _cont;
-		this.prefix = _prefix;
-		this.configureRoutes(app);
+		super(app, _cont, _prefix);
+		//this.controller = _cont;
+		//this.prefix = _prefix;
+		this.configureScoredRoutes(app);
 	}
 
-	private configureRoutes(app: express) {
+	private configureScoredRoutes(app: express) {
 		app.get('/' + this.prefix + '/currentScores', (req: express.Request, res: express.Response) => {
 			if (req.query.gameId !== undefined) {
 				this.controller.getScore(req.query.gameId)

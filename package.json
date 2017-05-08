@@ -11,7 +11,7 @@
     "typings": "typings",
     "prestart": "tsc",
     "html": "copyfiles public/**/*.html public/**/*.css built/",
-    "start": "npm run html; npm run tsc:w"
+    "start": "npm run html; concurrently \"npm run tsc:w\" \"node ./built/index.js\""
   },
   "repository": {
     "type": "git",
@@ -51,6 +51,7 @@
     "zone.js": "^0.8.10"
   },
   "devDependencies": {
+    "concurrently": "^2.0.0",
     "@types/node": "^7.0.0",
     "copyfiles": "^1.2.0",
     "nodemon": "^1.11.0",

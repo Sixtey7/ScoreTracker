@@ -8,8 +8,8 @@ import {
 
 export default class GenericRoutes<T extends GenericController<V, P>, V extends GameResult<P>, P extends PlayerResult> {
 	
-	private controller: T;
-	private prefix: string;
+	protected controller: T;
+	protected prefix: string;
 
 	constructor(app: express, _cont: T, _prefix: string) {
 		this.controller = _cont;
