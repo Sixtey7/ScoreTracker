@@ -2,11 +2,16 @@
   "name": "scoretracker",
   "version": "1.0.0",
   "description": "This is a pretty crappy ScoreTracker used to track the scores of board games.",
-  "main": "index.js",
+  "main": "./built/index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "npm run build:live",
-    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts"
+    "build:live": "nodemon --exec ./node_modules/.bin/ts-node -- ./index.ts",
+    "tsc": "tsc",
+    "tsc:w": "tsc -w",
+    "typings": "typings",
+    "prestart": "tsc",
+    "html": "copyfiles public/**/*.html public/**/*.css built/",
+    "start": "npm run html; npm run tsc:w"
   },
   "repository": {
     "type": "git",
@@ -20,16 +25,34 @@
   },
   "homepage": "https://github.com/Sixtey7/ScoreTrackerBackend#readme",
   "dependencies": {
+    "@angular/animations": "^4.1.1",
+    "@angular/common": "^4.1.1",
+    "@angular/compiler": "^4.1.1",
+    "@angular/compiler-cli": "^4.1.1",
+    "@angular/core": "^4.1.1",
+    "@angular/forms": "^4.1.1",
+    "@angular/http": "^4.1.1",
+    "@angular/platform-browser": "^4.1.1",
+    "@angular/platform-browser-dynamic": "^4.1.1",
+    "@angular/platform-server": "^4.1.1",
+    "@angular/router": "^4.1.1",
     "body-parser": "^1.14.1",
+    "bootstrap": "^3.3.7",
+    "bootstrap-material-design": "^0.5.10",
     "ejs": ">= 0.5.0",
     "errorhandler": "^1.4.2",
     "express": "^4.13.3",
     "method-override": "^2.3.5",
     "mongodb": ">= 1.4.29",
-    "mongoose": "^4.7.9"
+    "mongoose": "^4.7.9",
+    "rxjs": "^5.3.1",
+    "systemjs": "^0.20.12",
+    "typescript": "^2.3.2",
+    "zone.js": "^0.8.10"
   },
   "devDependencies": {
     "@types/node": "^7.0.0",
+    "copyfiles": "^1.2.0",
     "nodemon": "^1.11.0",
     "ts-node": "^2.0.0",
     "typescript": "^2.1.5"

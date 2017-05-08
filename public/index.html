@@ -1,0 +1,43 @@
+<html>
+    <head>
+        <meta charset = "UTF-8">
+        <title>Score Tracker 5000</title>
+        <script src="../node_modules/zone.js/dist/zone.js"></script>
+        <script src="../node_modules/reflect-metadata/Reflect.js"></script>
+        <script src="../node_modules/systemjs/dist/system.js"></script>
+        <script src="../node_modules/rxjs/bundles/Rx.js"></script>
+        <script src="../node_modules/jquery/dist/jquery.min.js"></script>
+        <script src="../node_modules/bootstrap/js/dropdown.js"></script>
+        <script src="../node_modules/bootstrap-datepicker/dist/js/bootstrap-datepicker.min.js"></script>
+
+        <script src="systemjs.config.js"></script>
+
+        <script>
+            System.import ('main.js')
+                .then(null, console.error.bind(console));
+        </script>
+
+        <!-- Material Design Fonts -->
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/css?family=Roboto:300,400,500,700">
+        <link rel="stylesheet" type="text/css" href="//fonts.googleapis.com/icon?family=Material+Icons">
+        
+        <!-- Bootstrap -->
+        <link rel="stylesheet" type="text/css" href="//maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    
+        <!-- Bootstrap Material Design -->
+        <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/bootstrap-material-design.css">
+        <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-material-design/dist/css/ripples.min.css">
+
+        <!-- Bootstrap Datepicker -->
+        <link rel="stylesheet" type="text/css" href="../node_modules/bootstrap-datepicker/dist/css/bootstrap-datepicker.css">
+
+
+        <link rel="stylesheet" type="text/css" href="app/style/app.style.css">
+
+        <base href = "/">    
+    </head>
+
+    <body>
+        <my-app>Loading AppComponent content here ...</my-app>
+    </body>
+</html>

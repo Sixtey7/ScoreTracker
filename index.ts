@@ -19,9 +19,12 @@ let app : express = express();
 app.use(bodyParser.urlencoded( { extended: true }));
 app.use(bodyParser.json());
 app.use(methodOverride());
+ 
+//include the webapp
+app.use(express.static(__dirname + '/public'));
 
-//TODO: Uncomment when angular is added 
-//app.use(express.static(__dirname + '/public'));
+//TODO: Should likely not expost the entire node modules directory, but rather expose the parts I need as a new path
+app.use('/node_modules', express.static(__dirname + '/../node_modules'));
 
 var env = process.env.NODE_ENV || 'development';
 if (env === 'development') {
@@ -39,8 +42,8 @@ new LauncherRoutes(app);
 new StandardRoutes(app);
 new AgricolaRoutes(app);
 
-app.listen(30000, function() {
-	console.log('App listening on port 30000');
+app.listen(3000, function() {
+	console.log('App listening on port 3000');
 });
 
 export var App = app;
