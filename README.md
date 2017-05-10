@@ -2,7 +2,9 @@
 ## Overview
 This is a pretty crappy ScoreTracker used to track the scores of board games.  
 
-Includes a custom score calculator for Agricola (whicih was the inspiration for stating the proejct)
+Includes a custom score calculator for Agricola (which was the inspiration for stating the proejct)
+
+This is written as an attempt to better learn Typescript and Angular 4.
 
 ## Current Focus
 + Agricola
