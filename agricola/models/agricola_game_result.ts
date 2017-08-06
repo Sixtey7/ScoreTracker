@@ -19,7 +19,7 @@ var agricolaGameResultSchema = new mongoose.Schema({
 	expansions: [String]
 });
 
-var AgricolaGameResult = mongoose.model<IGameResultModel>("AgricolaGameResult", agricolaGameResultSchema);
+var AgricolaGameResult = mongoose.model<IAgricolaGameResultModel>("AgricolaGameResult", agricolaGameResultSchema);
 
 export {
 	AgricolaGameResult,

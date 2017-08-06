@@ -105,7 +105,7 @@ export default class GenericController<G extends GameResult<P>, P extends Player
 					}
 					else {
 						console.log('no games found!');
-						resolve({});
+						resolve(null);
 					}
 				}
 			});
@@ -134,7 +134,7 @@ export default class GenericController<G extends GameResult<P>, P extends Player
 					console.log('Player already exists');
 					that.addPlayerToGame(_gameId, player)
 						.then(success => {
-							resolve(success);
+							resolve(player);
 						})
 
 						.catch( err=> {

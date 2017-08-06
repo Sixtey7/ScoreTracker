@@ -19,7 +19,7 @@ var standardGameResultSchema = new mongoose.Schema({
 	expansions: [String]
 });
 
-var StandardGameResult = mongoose.model<IGameResultModel>("GameResult", standardGameResultSchema);
+var StandardGameResult = mongoose.model<IStandardGameResultModel>("GameResult", standardGameResultSchema);
 
 export {
 	StandardGameResult,
